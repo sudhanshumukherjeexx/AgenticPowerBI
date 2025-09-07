@@ -16,18 +16,13 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 ref table Orders
 ref table DateTableTemplate_b44191fc-ed6e-4618-ad1e-5ccc717bdf0f
-ref table LocalDateTable_96e2d988-6b3a-4e6a-9518-c62d45e0a089
 ref table LocalDateTable_ef58c75b-1bac-4b53-92a2-b28611e5f809
 ref table People
 ref table Returns
 ref table Date
-ref table LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7
 ref table Customers
-ref table LocalDateTable_bc0b2584-4f36-4c37-94f2-c94fc6e32a14
-ref table LocalDateTable_72c80e69-3397-4caf-85cb-84336c6b7886
+ref table LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7
 ref table Products
-ref table LocalDateTable_e0326ef4-c4d4-4eab-abb9-a9d17ecd3100
-ref table LocalDateTable_20e2d66e-786a-418b-b304-4bf4722b6c54
 
 ref cultureInfo en-IN
 

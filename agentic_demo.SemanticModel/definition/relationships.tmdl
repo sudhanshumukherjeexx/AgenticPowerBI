@@ -1,35 +1,24 @@
-relationship 4da9724d-ad0e-4fc2-a25b-3da746fd3bbc
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Orders.'Order Date'
-	toColumn: LocalDateTable_96e2d988-6b3a-4e6a-9518-c62d45e0a089.Date
-
 relationship e2238d90-87b1-49fc-b904-0860870fe9a1
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Orders.'Ship Date'
 	toColumn: LocalDateTable_ef58c75b-1bac-4b53-92a2-b28611e5f809.Date
 
-relationship 241da354-f0b6-498b-9c84-7d2a23d620a9
+relationship 51918bf8-1c85-4c9b-872e-fd545149ee03
 	joinOnDateBehavior: datePartOnly
 	fromColumn: Date.Date
 	toColumn: LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7.Date
 
-relationship d8ee8d42-e25d-4c35-a98d-bae6bac1df8c
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Customers.'First Order'
-	toColumn: LocalDateTable_bc0b2584-4f36-4c37-94f2-c94fc6e32a14.Date
+relationship a54fa5df-57d0-449a-1a3a-093d4201cc3d
+	fromColumn: Orders.'Order Date'
+	toColumn: Date.Date
 
-relationship 10b5c355-b29d-492d-9034-ad18aea83bb1
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Customers.'Last Order'
-	toColumn: LocalDateTable_72c80e69-3397-4caf-85cb-84336c6b7886.Date
+relationship 0af4e453-0aa7-ec00-2283-055214a18310
+	isActive: false
+	fromColumn: Orders.'Customer ID'
+	toColumn: Customers.'Customer ID'
 
-relationship c2c40a93-1252-49e9-8eba-812c3a6c85a1
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Products.'First Sold'
-	toColumn: LocalDateTable_e0326ef4-c4d4-4eab-abb9-a9d17ecd3100.Date
-
-relationship 68906ca7-1f86-4543-bdcc-adaa3d4bb2de
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Products.'Last Sold'
-	toColumn: LocalDateTable_20e2d66e-786a-418b-b304-4bf4722b6c54.Date
+relationship 9d786b12-57e8-20cf-6520-6aae5b119afc
+	isActive: false
+	fromColumn: Orders.'Product ID'
+	toColumn: Products.'Product ID'
 

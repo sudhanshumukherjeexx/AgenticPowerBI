@@ -1,36 +1,49 @@
 table People
+	isHidden
 	lineageTag: ae8527ee-bcd4-4825-9bc6-56ef18d9dba3
 
 	column Name
 		dataType: string
+		isHidden
 		lineageTag: b7f66677-da2b-423f-98ad-a5703ba35b0b
 		summarizeBy: none
 		sourceColumn: Name
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column Item
 		dataType: string
+		isHidden
 		lineageTag: 3f08b298-f70b-4b31-b8a7-745c1f747e30
 		summarizeBy: none
 		sourceColumn: Item
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column Kind
 		dataType: string
+		isHidden
 		lineageTag: 9acf54fc-0260-4744-89db-d1e90c38d4ad
 		summarizeBy: none
 		sourceColumn: Kind
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
 	column Hidden
 		dataType: boolean
+		isHidden
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 788a019f-7684-4335-945f-cbd1af590545
 		summarizeBy: none
 		sourceColumn: Hidden
+
+		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic
 
@@ -41,6 +54,8 @@ table People
 				    Source = Excel.Workbook(File.Contents("D:\Neokai\Github_PBI\AgenticPowerBI\global_sales.xlsx"), null, true)
 				in
 				    Source
+
+	changedProperty = IsHidden
 
 	annotation PBI_ResultType = Table
 

@@ -2,63 +2,26 @@ table Customers
 	lineageTag: 1f52692e-6876-45b3-8ba4-1ed089ca51cc
 
 	column 'Customer ID'
-		lineageTag: 8c172aec-3cad-4c29-8839-d6e5c2189a1c
+		lineageTag: f9273f9c-4f53-40ea-a0d9-0c245b8f3c00
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Orders[Customer ID]
+		sourceColumn: [Customer ID]
 
 		annotation SummarizationSetBy = Automatic
 
 	column 'Customer Name'
-		lineageTag: 77cd3f36-6b80-4246-a780-5a871936b750
+		lineageTag: aa13f7c0-0d60-443b-bccb-7be16e698180
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Orders[Customer Name]
+		sourceColumn: [Customer Name]
 
 		annotation SummarizationSetBy = Automatic
 
 	column Segment
-		lineageTag: 0316fbe6-c6c8-4756-a974-c8b3535e1c90
+		lineageTag: c7cb2855-b180-486e-87dd-9c62b6695039
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Orders[Segment]
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'First Order'
-		formatString: General Date
-		lineageTag: ee767657-581d-4ad8-b75e-d1a30d2de72f
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: [First Order]
-
-		variation Variation
-			isDefault
-			relationship: d8ee8d42-e25d-4c35-a98d-bae6bac1df8c
-			defaultHierarchy: LocalDateTable_bc0b2584-4f36-4c37-94f2-c94fc6e32a14.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Last Order'
-		formatString: General Date
-		lineageTag: d48f645a-65b4-448c-8f4c-485466525445
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: [Last Order]
-
-		variation Variation
-			isDefault
-			relationship: 10b5c355-b29d-492d-9034-ad18aea83bb1
-			defaultHierarchy: LocalDateTable_72c80e69-3397-4caf-85cb-84336c6b7886.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Total Orders'
-		formatString: 0
-		lineageTag: bf2f73c1-ec5e-469b-aff4-ea25db45c96a
-		summarizeBy: sum
-		isNameInferred
-		sourceColumn: [Total Orders]
+		sourceColumn: [Segment]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -66,14 +29,13 @@ table Customers
 		mode: import
 		source =
 				
-				SUMMARIZE(
-				    Orders,
-				    Orders[Customer ID],
-				    Orders[Customer Name],
-				    Orders[Segment],
-				    "First Order", MIN(Orders[Order Date]),
-				    "Last Order", MAX(Orders[Order Date]),
-				    "Total Orders", DISTINCTCOUNT(Orders[Order ID])
+				DISTINCT(
+				    SELECTCOLUMNS(
+				        Orders,
+				        "Customer ID", Orders[Customer ID],
+				        "Customer Name", Orders[Customer Name],
+				        "Segment", Orders[Segment]
+				    )
 				)
 
 	annotation PBI_Id = 368c70558f1041278119f1c2d19b1804

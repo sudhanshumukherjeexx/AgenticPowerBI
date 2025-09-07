@@ -10,21 +10,21 @@
       "nodes": [
         {
           "location": {
-            "x": 0,
+            "x": 332,
             "y": 0
           },
           "nodeIndex": "Orders",
           "nodeLineageTag": "5b81d44b-e499-4781-952d-3dc670432d7e",
           "size": {
-            "height": 300,
+            "height": 188,
             "width": 215
           },
-          "zIndex": 5
+          "zIndex": 1
         },
         {
           "location": {
-            "x": 8,
-            "y": 382
+            "x": 1085,
+            "y": 188
           },
           "nodeIndex": "People",
           "nodeLineageTag": "ae8527ee-bcd4-4825-9bc6-56ef18d9dba3",
@@ -32,11 +32,11 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 795,
+            "x": 1077,
             "y": 0
           },
           "nodeIndex": "Returns",
@@ -45,12 +45,12 @@
             "height": 152,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 3
         },
         {
           "location": {
-            "x": 335,
-            "y": 193
+            "x": 20,
+            "y": 267
           },
           "nodeIndex": "Date",
           "nodeLineageTag": "ca3f230e-0e13-4177-9750-c287ff6d76cf",
@@ -62,27 +62,29 @@
         },
         {
           "location": {
-            "x": 1169,
-            "y": 73
+            "x": 421,
+            "y": 275
           },
           "nodeIndex": "Customers",
+          "nodeLineageTag": "1f52692e-6876-45b3-8ba4-1ed089ca51cc",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 4
         },
         {
           "location": {
-            "x": 1453,
-            "y": 73
+            "x": 752.60000610351563,
+            "y": 276.5
           },
           "nodeIndex": "Products",
+          "nodeLineageTag": "826d165c-be5f-4d1d-8b43-894b83522f9d",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 5
         }
       ],
       "name": "All tables",

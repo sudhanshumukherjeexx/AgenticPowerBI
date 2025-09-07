@@ -98,11 +98,6 @@ table Orders
 		summarizeBy: none
 		sourceColumn: Order Date
 
-		variation Variation
-			isDefault
-			relationship: 4da9724d-ad0e-4fc2-a25b-3da746fd3bbc
-			defaultHierarchy: LocalDateTable_96e2d988-6b3a-4e6a-9518-c62d45e0a089.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date

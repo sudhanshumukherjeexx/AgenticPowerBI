@@ -1,63 +1,27 @@
 table Products
-	lineageTag: 1a98b9bc-c3d6-4b55-bed7-763f6b5b2537
+	lineageTag: 826d165c-be5f-4d1d-8b43-894b83522f9d
 
 	column 'Product ID'
-		lineageTag: 7b8ea7b3-a923-4875-b539-cb34ca51cde8
+		lineageTag: 0d4e9255-5bbe-4b5e-8db1-6e482537701c
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: Orders[Product ID]
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Product Name'
-		lineageTag: 5f16c7d3-48b7-4aa5-8936-8542e1248bf8
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: Orders[Product Name]
-
-		annotation SummarizationSetBy = Automatic
-
 	column Category
-		lineageTag: 92df17dc-eb74-49fa-9a04-899fd6978782
+		lineageTag: de840e7c-caab-4d28-aec9-9a71d864284f
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Orders[Category]
+		sourceColumn: [Category]
 
 		annotation SummarizationSetBy = Automatic
 
 	column Sub-Category
-		lineageTag: 37b55a81-8360-4247-b978-4905e07535f1
+		lineageTag: 3d2c504b-0639-4eae-9d2f-e085fa828e37
 		summarizeBy: none
 		isNameInferred
-		sourceColumn: Orders[Sub-Category]
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'First Sold'
-		formatString: General Date
-		lineageTag: 8fdc83cd-46ab-41ff-ac7d-e41a226687da
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: [First Sold]
-
-		variation Variation
-			isDefault
-			relationship: c2c40a93-1252-49e9-8eba-812c3a6c85a1
-			defaultHierarchy: LocalDateTable_e0326ef4-c4d4-4eab-abb9-a9d17ecd3100.'Date Hierarchy'
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Last Sold'
-		formatString: General Date
-		lineageTag: ac54913a-ce44-481e-a86c-b0979ba478ea
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: [Last Sold]
-
-		variation Variation
-			isDefault
-			relationship: 68906ca7-1f86-4543-bdcc-adaa3d4bb2de
-			defaultHierarchy: LocalDateTable_20e2d66e-786a-418b-b304-4bf4722b6c54.'Date Hierarchy'
+		sourceColumn: [Sub-Category]
 
 		annotation SummarizationSetBy = Automatic
 
@@ -68,12 +32,9 @@ table Products
 				SUMMARIZE(
 				    Orders,
 				    Orders[Product ID],
-				    Orders[Product Name],
-				    Orders[Category],
-				    Orders[Sub-Category],
-				    "First Sold", MIN(Orders[Order Date]),
-				    "Last Sold", MAX(Orders[Order Date])
+				    "Category", FIRSTNONBLANK(Orders[Category], Orders[Category]),
+				    "Sub-Category", FIRSTNONBLANK(Orders[Sub-Category], Orders[Sub-Category])
 				)
 
-	annotation PBI_Id = d5a3830e189e46668d22b06388708090
+	annotation PBI_Id = c0a33e58662342a192a8164fbf641321
 

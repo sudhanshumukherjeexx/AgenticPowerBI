@@ -10,14 +10,14 @@ table Date
 
 		variation Variation
 			isDefault
-			relationship: 241da354-f0b6-498b-9c84-7d2a23d620a9
+			relationship: 51918bf8-1c85-4c9b-872e-fd545149ee03
 			defaultHierarchy: LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
 	column Year
 		formatString: 0
-		lineageTag: b4b5a99c-4ad4-49cc-8ae3-754cb4f9e7e9
+		lineageTag: 28dbde4d-49f0-4a8d-9d8e-095e22ae15b1
 		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [Year]
@@ -26,40 +26,32 @@ table Date
 
 	column Month
 		formatString: 0
-		lineageTag: ac4aa1e4-126f-4872-88f2-2b3561814ed1
+		lineageTag: ef12f854-0e54-477e-bb84-eefdabbb0a27
 		summarizeBy: sum
 		isNameInferred
 		sourceColumn: [Month]
 
 		annotation SummarizationSetBy = Automatic
 
+	column Quarter
+		formatString: 0
+		lineageTag: 8430ac2b-5f92-453f-aebf-7cba48fbfccd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
 	column MonthName
-		lineageTag: 1e5750ef-f994-4e64-9c9d-f6006556c247
+		lineageTag: 55f96a42-71a4-48c8-9130-817813166072
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [MonthName]
 
 		annotation SummarizationSetBy = Automatic
 
-	column Quarter
-		lineageTag: 42157032-f81b-4dfd-aea1-527987c1d17e
-		summarizeBy: none
-		isNameInferred
-		sourceColumn: [Quarter]
-
-		annotation SummarizationSetBy = Automatic
-
-	column Weekday
-		formatString: 0
-		lineageTag: 1aa49539-a0f5-4f4c-ab1a-171e18925c04
-		summarizeBy: sum
-		isNameInferred
-		sourceColumn: [Weekday]
-
-		annotation SummarizationSetBy = Automatic
-
 	column WeekdayName
-		lineageTag: 73185bc9-438e-40e7-bec9-33580435f5ad
+		lineageTag: c56d8cce-a4cc-4599-b887-dca841f18613
 		summarizeBy: none
 		isNameInferred
 		sourceColumn: [WeekdayName]
@@ -71,12 +63,11 @@ table Date
 		source =
 				
 				ADDCOLUMNS(
-				    CALENDAR(MIN(Orders[Order Date]), MAX(Orders[Order Date])),
+				    CALENDAR(DATE(2012,1,1), DATE(2015,12,31)),
 				    "Year", YEAR([Date]),
 				    "Month", MONTH([Date]),
+				    "Quarter", QUARTER([Date]),
 				    "MonthName", FORMAT([Date], "MMMM"),
-				    "Quarter", "Q" & QUARTER([Date]),
-				    "Weekday", WEEKDAY([Date]),
 				    "WeekdayName", FORMAT([Date], "dddd")
 				)
 
