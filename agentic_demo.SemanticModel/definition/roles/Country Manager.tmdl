@@ -1,0 +1,14 @@
+role 'Country Manager'
+	modelPermission: read
+
+	tablePermission Orders =
+			Orders[Country] = LOOKUPVALUE(
+			    CountryAccess[Country],
+			    CountryAccess[Username],
+			    USERPRINCIPALNAME()
+			)
+
+	tablePermission Returns
+
+	annotation PBI_Id = e966112bbaf34196a9ffba03aea14bbf
+

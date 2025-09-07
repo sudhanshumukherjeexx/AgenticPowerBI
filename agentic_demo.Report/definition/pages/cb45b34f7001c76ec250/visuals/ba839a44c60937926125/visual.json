@@ -1,0 +1,141 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "ba839a44c60937926125",
+  "position": {
+    "x": 45.2831705723714,
+    "y": 49.399822442586981,
+    "z": 0,
+    "height": 671.01425484513982,
+    "width": 1234.9955610646746
+  },
+  "visual": {
+    "visualType": "sankey02300D1BE6F5427989F3DE31CCA9E0F32020",
+    "query": {
+      "queryState": {
+        "Source": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Region"
+                }
+              },
+              "queryRef": "Orders.Region",
+              "nativeQueryRef": "Region"
+            }
+          ]
+        },
+        "Destination": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Category"
+                }
+              },
+              "queryRef": "Orders.Category",
+              "nativeQueryRef": "Category"
+            }
+          ]
+        },
+        "Weight": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "Orders.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "nodeComplexSettings": [
+        {
+          "properties": {
+            "nodePositions": {
+              "expr": {
+                "Literal": {
+                  "Value": "'[{\"name\":\"Canada\",\"x\":\"0\",\"y\":\"0\"},{\"name\":\"Caribbean\",\"x\":\"0\",\"y\":\"9\"},{\"name\":\"East\",\"x\":\"0\",\"y\":\"29\"},{\"name\":\"West\",\"x\":\"0\",\"y\":\"63\"},{\"name\":\"Central Asia\",\"x\":\"0\",\"y\":\"99\"},{\"name\":\"Africa\",\"x\":\"0\",\"y\":\"136\"},{\"name\":\"EMEA\",\"x\":\"0\",\"y\":\"174\"},{\"name\":\"North Asia\",\"x\":\"0\",\"y\":\"213\"},{\"name\":\"Southeast Asia\",\"x\":\"0\",\"y\":\"254\"},{\"name\":\"Oceania\",\"x\":\"0\",\"y\":\"297\"},{\"name\":\"North\",\"x\":\"0\",\"y\":\"348\"},{\"name\":\"South\",\"x\":\"0\",\"y\":\"406\"},{\"name\":\"Central\",\"x\":\"0\",\"y\":\"477\"},{\"name\":\"Furniture\",\"x\":\"1183\",\"y\":\"0\"},{\"name\":\"Technology\",\"x\":\"1183\",\"y\":\"196\"},{\"name\":\"Office Supplies\",\"x\":\"1183\",\"y\":\"417\"}]'"
+                }
+              }
+            },
+            "viewportSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "'{\"height\":\"599.4142525563215\",\"width\":\"1204.9955610646746\"}'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8809c5bfcce3ee246767",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Orders"
+              }
+            },
+            "Property": "Region"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7a6211b68b3620e6bfc8",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Orders"
+              }
+            },
+            "Property": "Category"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f8e8cc5475f10981c87f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Orders"
+              }
+            },
+            "Property": "Total Sales"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

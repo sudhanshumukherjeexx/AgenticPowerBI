@@ -1,0 +1,14 @@
+role 'Sales Manager'
+	modelPermission: read
+
+	tablePermission Orders =
+			Orders[Region] = LOOKUPVALUE(
+			    RegionManager[Region],
+			    RegionManager[Username],
+			    USERPRINCIPALNAME()
+			)
+
+	tablePermission Returns
+
+	annotation PBI_Id = 798fa337fb8a4aff8b4dc084405fa6ec
+

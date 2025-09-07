@@ -27,5 +27,9 @@ ref table RegionAccess
 ref table CountryAccess
 ref table RegionManager
 
+ref role 'Sales Manager'
+ref role 'Country Manager'
+ref role 'Regional Director'
+
 ref cultureInfo en-IN
 

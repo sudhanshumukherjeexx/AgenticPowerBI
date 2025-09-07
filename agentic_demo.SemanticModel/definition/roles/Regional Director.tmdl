@@ -1,0 +1,15 @@
+role 'Regional Director'
+	modelPermission: read
+
+	tablePermission Orders =
+			Orders[Region] IN
+			SELECTCOLUMNS(
+			    FILTER(
+			        RegionAccess,
+			        RegionAccess[Username] = USERPRINCIPALNAME()
+			    ),
+			    "Region", RegionAccess[Region]
+			)
+
+	annotation PBI_Id = a326ac40fdd24d79b623ecc24a5069ee
+
