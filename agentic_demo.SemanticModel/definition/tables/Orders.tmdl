@@ -26,9 +26,8 @@ table Orders
 	measure 'Profit Margin %' =
 			
 			DIVIDE([Total Profit], [Total Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: 3433fdb0-22f1-46c0-a157-e77c31121a4b
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Average Order Value' =
 			
