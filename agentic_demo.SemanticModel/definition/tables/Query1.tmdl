@@ -1,0 +1,128 @@
+table Query1
+	lineageTag: 48498793-aa92-40cd-b960-3cb6c9abfb9a
+
+	column 'Date ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 9248d8f3-47e8-4061-a4eb-82cbe8ee3f16
+		summarizeBy: count
+		sourceColumn: Date ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: string
+		lineageTag: 1cbfe79c-3887-4ff9-9e6c-375dc16b12ae
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b97f512d-ba06-4cba-ab6e-74aebebb083b
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: fa324222-ce28-429f-abc5-13b132f6e6fc
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 3077eaae-e17a-47f3-8633-621928e78481
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 5eb41f1e-303d-417e-8013-82e312939cda
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: 88cfe041-37cf-44ca-9543-38ada91addfa
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c7d656d-971c-4fed-a3e1-b7098891a437
+		summarizeBy: sum
+		sourceColumn: Fiscal Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Query1 = m
+		mode: import
+		source =
+				// Create a Date Dimension table from Order Date column in global_sales.xlsx
+				
+				let
+				    // Load Orders sheet
+				    Source = Excel.Workbook(File.Contents("d:\Neokai\Github_PBI\AgenticPowerBI\global_sales.xlsx"), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    Orders = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				
+				    // Convert Order Date to date type (handles Excel serial numbers)
+				    OrdersWithDate = Table.TransformColumns(
+				        Orders,
+				        {{"Order Date", each Date.From(Number.From(_)), type date}}
+				    ),
+				
+				    // Get min and max dates from Order Date column
+				    MinDate = List.Min(OrdersWithDate[Order Date]),
+				    MaxDate = List.Max(OrdersWithDate[Order Date]),
+				
+				    // Generate continuous date list
+				    DateList = List.Dates(MinDate, Duration.Days(MaxDate - MinDate) + 1, #duration(1,0,0,0)),
+				
+				    // Create Date Dimension table
+				    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				
+				    // Add Date ID (yyyymmdd as number)
+				    AddDateID = Table.AddColumn(DateTable, "Date ID", each Number.FromText(Date.ToText([Date], "yyyyMMdd")), Int64.Type),
+				
+				    // Add Year, Quarter, Month, Month Name
+				    AddYear = Table.AddColumn(AddDateID, "Year", each Date.Year([Date]), Int64.Type),
+				    AddQuarter = Table.AddColumn(AddYear, "Quarter", each Date.QuarterOfYear([Date]), Int64.Type),
+				    AddMonth = Table.AddColumn(AddQuarter, "Month", each Date.Month([Date]), Int64.Type),
+				    AddMonthName = Table.AddColumn(AddMonth, "Month Name", each Date.ToText([Date], "MMMM"), type text),
+				
+				    // Add Fiscal Year (assume fiscal year starts in July)
+				    AddFiscalYear = Table.AddColumn(AddMonthName, "Fiscal Year", each if Date.Month([Date]) >= 7 then Date.Year([Date]) + 1 else Date.Year([Date]), Int64.Type),
+				    AddFiscalQuarter = Table.AddColumn(AddFiscalYear, "Fiscal Quarter", each Number.Mod(Date.QuarterOfYear([Date]) + 2, 4) + 1, Int64.Type),
+				
+				    // Remove duplicate dates if any (shouldn't happen, but for safety)
+				    RemoveDuplicates = Table.Distinct(AddFiscalQuarter, {"Date"}),
+				
+				    // Reorder columns
+				    FinalDateTable = Table.SelectColumns(
+				        RemoveDuplicates,
+				        {"Date ID", "Date", "Year", "Quarter", "Month", "Month Name", "Fiscal Year", "Fiscal Quarter"}
+				    )
+				in
+				    FinalDateTable
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

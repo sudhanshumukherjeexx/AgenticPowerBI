@@ -2,8 +2,8 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
   "name": "f307b2f07b209384ca07",
   "position": {
-    "x": 41.16651870215582,
-    "y": 113.89403507596442,
+    "x": 39.794301412083954,
+    "y": 56.260908892946283,
     "z": 1,
     "height": 168.78272667883886,
     "width": 651.80321278413373,
@@ -50,49 +50,7 @@
       ],
       "general": [
         {
-          "properties": {
-            "filter": {
-              "filter": {
-                "Version": 2,
-                "From": [
-                  {
-                    "Name": "o",
-                    "Entity": "Orders",
-                    "Type": 0
-                  }
-                ],
-                "Where": [
-                  {
-                    "Condition": {
-                      "In": {
-                        "Expressions": [
-                          {
-                            "Column": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Source": "o"
-                                }
-                              },
-                              "Property": "Region"
-                            }
-                          }
-                        ],
-                        "Values": [
-                          [
-                            {
-                              "Literal": {
-                                "Value": "'Canada'"
-                              }
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  }
-                ]
-              }
-            }
-          }
+          "properties": {}
         }
       ],
       "header": [

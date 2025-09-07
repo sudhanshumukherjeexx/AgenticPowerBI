@@ -10,7 +10,7 @@ annotation PBI_ProTooling = ["DevMode"]
 
 annotation PBIDesktopVersion = 2.146.1254.0 (25.08)+791a7518fadc83da883d79322a2658aff57c8db3
 
-annotation PBI_QueryOrder = ["Orders","People","Returns"]
+annotation PBI_QueryOrder = ["Orders","People","Returns","Query1"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -26,6 +26,7 @@ ref table Products
 ref table RegionAccess
 ref table CountryAccess
 ref table RegionManager
+ref table Query1
 
 ref role 'Sales Manager'
 ref role 'Country Manager'
