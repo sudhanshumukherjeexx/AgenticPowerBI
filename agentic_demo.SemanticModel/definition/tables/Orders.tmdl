@@ -74,6 +74,42 @@ table Orders
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
+	measure 'Dynamic Report Title' =
+			
+			VAR MinDate = MIN('Orders'[Order Date])
+			VAR MaxDate = MAX('Orders'[Order Date])
+			VAR SelectedRegion = SELECTEDVALUE('Orders'[Region], "All Regions")
+			RETURN
+			"Sales Report: " &
+			FORMAT(MinDate, "MMM YYYY") & " - " & FORMAT(MaxDate, "MMM YYYY") &
+			" | " & SelectedRegion
+		lineageTag: 6ffe2045-a1bc-4111-86c6-bead55402d17
+
+	measure 'Top Products Chart Title' =
+			
+			VAR SelectedRegion = SELECTEDVALUE('Orders'[Region], "All Regions")
+			RETURN
+			"Top Products in " & SelectedRegion
+		lineageTag: 1667df7a-74f5-4a08-913f-4ee8201484e3
+
+	measure 'Category Analysis Title' =
+			
+			VAR SelectedCategory = SELECTEDVALUE('Orders'[Category], "All Categories")
+			VAR SelectedRegion = SELECTEDVALUE('Orders'[Region], "All Regions")
+			RETURN
+			SelectedCategory & " Performance in " & SelectedRegion
+		lineageTag: 0dbaba17-513c-4f04-b266-42236acc1dbd
+
+	measure 'Data Freshness Title' = ```
+			
+			VAR LastOrderDate = MAX('Orders'[Order Date])
+			VAR DaysOld = DATEDIFF(LastOrderDate, TODAY(), DAY)
+			RETURN
+			"Data as of: " & FORMAT(LastOrderDate, "MMM DD, YYYY") & 
+			" (" & DaysOld & " days ago)"
+			```
+		lineageTag: 1159c896-38dc-4db6-a521-4c697e904624
+
 	column 'Row ID'
 		dataType: string
 		lineageTag: b1c75f64-f086-473c-b9d9-158dd812c90e
