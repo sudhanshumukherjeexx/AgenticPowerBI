@@ -1,0 +1,36 @@
+table RegionManager
+	lineageTag: 59d71cad-606c-482a-a7ba-5cb626d13ebc
+
+	column Username
+		lineageTag: 65785777-bc83-4bcb-9c8a-8735fdd7141f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Username]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		lineageTag: 6fa627ff-e20c-4440-98a6-bb1c43d61747
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Region]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RegionManager = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Username", STRING,
+				    "Region", STRING,
+				    {
+				        {"central.manager@company.com", "Central"},
+				        {"east.manager@company.com", "East"},
+				        {"west.manager@company.com", "West"},
+				        {"south.manager@company.com", "South"}
+				    }
+				)
+
+	annotation PBI_Id = 24e55d1d21084aaf81731b86acc95933
+

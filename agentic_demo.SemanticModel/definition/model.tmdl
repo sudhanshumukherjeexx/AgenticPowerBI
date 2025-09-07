@@ -23,6 +23,9 @@ ref table Date
 ref table Customers
 ref table LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7
 ref table Products
+ref table RegionAccess
+ref table CountryAccess
+ref table RegionManager
 
 ref cultureInfo en-IN
 

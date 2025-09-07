@@ -1,0 +1,38 @@
+table CountryAccess
+	lineageTag: 9851378f-623c-4343-b10f-765ff8692c53
+
+	column Username
+		lineageTag: 10e2d9d0-4c70-4412-8763-2f621bfd9a05
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Username]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		lineageTag: 3fd62d25-77ab-48de-81de-522598c18ef9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Country]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CountryAccess = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Username", STRING,
+				    "Country", STRING,
+				    {
+				        {"us.manager@company.com", "United States"},
+				        {"uk.manager@company.com", "United Kingdom"},
+				        {"canada.manager@company.com", "Canada"},
+				        {"france.manager@company.com", "France"},
+				        {"germany.manager@company.com", "Germany"},
+				        {"australia.manager@company.com", "Australia"}
+				    }
+				)
+
+	annotation PBI_Id = 87bf7cfd503c4b74a6ff24dee5aa9699
+
