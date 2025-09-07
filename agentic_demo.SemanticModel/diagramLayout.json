@@ -7,7 +7,84 @@
         "x": 0,
         "y": 0
       },
-      "nodes": [],
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Orders",
+          "nodeLineageTag": "5b81d44b-e499-4781-952d-3dc670432d7e",
+          "size": {
+            "height": 300,
+            "width": 215
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 8,
+            "y": 382
+          },
+          "nodeIndex": "People",
+          "nodeLineageTag": "ae8527ee-bcd4-4825-9bc6-56ef18d9dba3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 795,
+            "y": 0
+          },
+          "nodeIndex": "Returns",
+          "nodeLineageTag": "fc48ce5f-76ad-4574-87e5-47b568992ec4",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 335,
+            "y": 193
+          },
+          "nodeIndex": "Date",
+          "nodeLineageTag": "ca3f230e-0e13-4177-9750-c287ff6d76cf",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1169,
+            "y": 73
+          },
+          "nodeIndex": "Customers",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1453,
+            "y": 73
+          },
+          "nodeIndex": "Products",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
       "name": "All tables",
       "zoomValue": 100,
       "pinKeyFieldsToTop": false,

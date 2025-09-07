@@ -1,0 +1,84 @@
+table Date
+	lineageTag: ca3f230e-0e13-4177-9750-c287ff6d76cf
+
+	column Date
+		formatString: General Date
+		lineageTag: 1c66be21-ea26-41de-9a27-2e6044a92e4e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 241da354-f0b6-498b-9c84-7d2a23d620a9
+			defaultHierarchy: LocalDateTable_a01f4347-3fd2-488f-946b-4471f12bfee7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: b4b5a99c-4ad4-49cc-8ae3-754cb4f9e7e9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: ac4aa1e4-126f-4872-88f2-2b3561814ed1
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		lineageTag: 1e5750ef-f994-4e64-9c9d-f6006556c247
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 42157032-f81b-4dfd-aea1-527987c1d17e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weekday
+		formatString: 0
+		lineageTag: 1aa49539-a0f5-4f4c-ab1a-171e18925c04
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Weekday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekdayName
+		lineageTag: 73185bc9-438e-40e7-bec9-33580435f5ad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WeekdayName]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(MIN(Orders[Order Date]), MAX(Orders[Order Date])),
+				    "Year", YEAR([Date]),
+				    "Month", MONTH([Date]),
+				    "MonthName", FORMAT([Date], "MMMM"),
+				    "Quarter", "Q" & QUARTER([Date]),
+				    "Weekday", WEEKDAY([Date]),
+				    "WeekdayName", FORMAT([Date], "dddd")
+				)
+
+	annotation PBI_Id = 83fed995dd254a868996e49123a9ed95
+
