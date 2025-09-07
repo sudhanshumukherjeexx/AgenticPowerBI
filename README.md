@@ -1,2 +1,2 @@
 # AgenticPowerBI
-repo for my self hoster mcp server for testing out PowerBI workflow using VSCode and GitHub Copilot
+repo for my self hosted prompt case for testing out PowerBI workflow using VSCode and GitHub Copilot
