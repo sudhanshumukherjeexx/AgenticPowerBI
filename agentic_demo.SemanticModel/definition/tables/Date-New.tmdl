@@ -1,0 +1,419 @@
+table Date-New
+	lineageTag: 3fcbbda4-1067-4eb0-9ffa-928a125b82d4
+
+	column Date
+		formatString: General Date
+		lineageTag: 106910ab-30b4-4310-b4e3-2ae35043a5f9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 83d76d4a-7e79-44cc-9c02-8d21f8b70ec5
+			defaultHierarchy: LocalDateTable_a5eb28c1-339b-4ce2-bfcd-c8fea5e57475.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date ID'
+		lineageTag: b5cfaf5f-4e88-4f37-a975-77f7eabfcfc0
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: b41f76c0-eb7c-4e40-9c79-7c72afbbdf9f
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		formatString: 0
+		lineageTag: c7252ce3-fb17-4725-82b3-12ab43afdd9c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: 7d4568a1-fea8-42c4-9c97-76d7df5194a9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		lineageTag: 94e4a9ac-8c3e-472f-bbd2-387c23ec5bd9
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Short'
+		lineageTag: 12ba4a1f-6f26-4c88-b2ef-d779c6f31d71
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		formatString: 0
+		lineageTag: c9c4bbe0-26a7-49b0-aaa3-80c643ca6760
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Week'
+		formatString: 0
+		lineageTag: 52920e3f-d6fa-4b15-97f9-b0503a6e4554
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ISO Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: 8709869c-8037-44fc-bfe1-ef36fce6ca6a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		lineageTag: c10d84d5-54a5-4ad7-94eb-9a5800ade46f
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Short'
+		lineageTag: 87c96267-b56c-4628-a860-4ed4b0fe5f08
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Day Short]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Weekend'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 85a14656-6501-4007-a7e9-65c1602728a3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Weekend]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		formatString: 0
+		lineageTag: ca38bd3b-3c48-45b7-9e93-cc477ff5ae5c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Fiscal Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		formatString: 0
+		lineageTag: bdd007ea-0db8-4529-8e7e-613658091ed2
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Fiscal Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month'
+		formatString: 0
+		lineageTag: a3429d6b-5fe3-4a89-abea-022902501da5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Fiscal Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year Label'
+		lineageTag: 014e822d-9a02-47d5-8979-92db82d23478
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fiscal Year Label]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Start Date'
+		formatString: General Date
+		lineageTag: a5f88842-3ee2-4a96-a8f3-84b774fe73d6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Week Start Date]
+
+		variation Variation
+			isDefault
+			relationship: ddf76ffc-4dc1-4372-bb36-2ce1575eebf6
+			defaultHierarchy: LocalDateTable_aac8dacc-9743-4b83-b3f3-c7ff95595815.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Start Date'
+		formatString: General Date
+		lineageTag: a8f14c47-7825-420b-bd39-17627170b539
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month Start Date]
+
+		variation Variation
+			isDefault
+			relationship: 40002026-f1f7-4e1b-bfb1-8521bb78ecab
+			defaultHierarchy: LocalDateTable_327ec736-0251-4d6f-b2e4-e5ec94401975.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Start Date'
+		formatString: General Date
+		lineageTag: 0c2c32d6-d773-40d9-a20d-c2d11f208d66
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter Start Date]
+
+		variation Variation
+			isDefault
+			relationship: 3e7e760f-835e-4e55-9c7d-d077ab2c1751
+			defaultHierarchy: LocalDateTable_c5718507-9e5a-4f84-9617-da1f455fa72a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Year Start Date'
+		formatString: General Date
+		lineageTag: 700b43bc-4ada-4ade-81d3-e355564a6afa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Year Start Date]
+
+		variation Variation
+			isDefault
+			relationship: 75bb8eec-cdf3-4084-a046-09373d547865
+			defaultHierarchy: LocalDateTable_fb0564ea-cede-4756-892e-168d97cf8ced.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days from Today'
+		formatString: 0
+		lineageTag: ae43acb6-ca58-4454-b486-f86f5d3041f7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Days from Today]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Months from Today'
+		formatString: 0
+		lineageTag: c54a66d9-9acb-4e4d-9910-f0ca659a1005
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Months from Today]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Holiday'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8b0e87a1-66a3-4668-9a1b-53d47b208937
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Holiday]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Business Day'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b6f9f764-e592-4268-b13c-085facb39951
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Business Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Relative Period'
+		lineageTag: 9edded37-6b29-4096-9fc6-66e7a2a0f3fd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Relative Period]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Current Year'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d947f51c-c9f4-4b97-8dae-afb7f5812145
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Current Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Current Quarter'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 104de4dd-76b2-4e21-9bbd-c440283f32a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Current Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Current Month'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c7d56a6b-3915-47e0-9f25-5d1d5f8a77fc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Current Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Previous Year'
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4e0ec8fe-9f6b-4cf2-8bd9-3f1e1e750940
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Is Previous Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Season
+		lineageTag: 0af5ce0f-c444-4598-8a3f-d8b3f1be2990
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Season]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Sort'
+		formatString: 0
+		lineageTag: 12b327a1-887b-4e2e-be21-423ae2ce7d25
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Sort'
+		formatString: 0
+		lineageTag: a1edcf54-745f-4725-b7aa-3bd91d1846d5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Quarter Sort'
+		formatString: 0
+		lineageTag: 20cceff2-77df-4f27-be4b-b10c05175d83
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter Sort]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Date-New = calculated
+		mode: import
+		source = ```
+				
+				ADDCOLUMNS (
+				    CALENDAR (DATE(2010,1,1), DATE(2030,12,31)),
+				    "Date ID", FORMAT([Date], "YYYYMMDD"),
+				    "Year", YEAR([Date]),
+				    "Quarter", QUARTER([Date]),
+				    "Month", MONTH([Date]),
+				    "Month Name", FORMAT([Date], "MMMM"),
+				    "Month Short", FORMAT([Date], "MMM"),
+				    "Week", WEEKNUM([Date], 1),
+				    "ISO Week", WEEKNUM([Date], 21),
+				    "Day", DAY([Date]),
+				    "Day Name", FORMAT([Date], "dddd"),
+				    "Day Short", FORMAT([Date], "ddd"),
+				    "Is Weekend", WEEKDAY([Date],2) > 5,
+				    
+				    -- Fiscal Year (April 1st start)
+				    "Fiscal Year", IF(MONTH([Date]) >= 4, YEAR([Date]) + 1, YEAR([Date])),
+				    "Fiscal Quarter", SWITCH(TRUE(),
+				        MONTH([Date]) >= 4 && MONTH([Date]) <= 6, 1,
+				        MONTH([Date]) >= 7 && MONTH([Date]) <= 9, 2,
+				        MONTH([Date]) >= 10 && MONTH([Date]) <= 12, 3,
+				        4
+				    ),
+				    "Fiscal Month", IF(MONTH([Date]) >= 4, MONTH([Date]) - 3, MONTH([Date]) + 9),
+				    "Fiscal Year Label", "FY" & IF(MONTH([Date]) >= 4, YEAR([Date]) + 1, YEAR([Date])),
+				    
+				    -- Date Boundaries
+				    "Week Start Date", [Date] - WEEKDAY([Date],2) + 1,
+				    "Month Start Date", DATE(YEAR([Date]), MONTH([Date]), 1),
+				    "Quarter Start Date", DATE(YEAR([Date]), ((QUARTER([Date])-1)*3)+1, 1),
+				    "Year Start Date", DATE(YEAR([Date]), 1, 1),
+				    
+				    -- Relative Calculations
+				    "Days from Today", DATEDIFF([Date], TODAY(), DAY),
+				    "Months from Today", DATEDIFF([Date], TODAY(), MONTH),
+				    
+				    -- Holiday Detection
+				    "Is Holiday", 
+				        (MONTH([Date]) = 1 && DAY([Date]) = 1) ||
+				        (MONTH([Date]) = 7 && DAY([Date]) = 4) ||
+				        (MONTH([Date]) = 12 && DAY([Date]) = 25) ||
+				        (MONTH([Date]) = 11 && WEEKDAY([Date]) = 5 && DAY([Date]) >= 22 && DAY([Date]) <= 28) ||
+				        (MONTH([Date]) = 9 && WEEKDAY([Date]) = 2 && DAY([Date]) <= 7),
+				    
+				    -- Business Day (calculated inline, not referencing other columns)
+				    "Is Business Day", NOT(WEEKDAY([Date],2) > 5) && NOT(
+				        (MONTH([Date]) = 1 && DAY([Date]) = 1) ||
+				        (MONTH([Date]) = 7 && DAY([Date]) = 4) ||
+				        (MONTH([Date]) = 12 && DAY([Date]) = 25) ||
+				        (MONTH([Date]) = 11 && WEEKDAY([Date]) = 5 && DAY([Date]) >= 22 && DAY([Date]) <= 28) ||
+				        (MONTH([Date]) = 9 && WEEKDAY([Date]) = 2 && DAY([Date]) <= 7)
+				    ),
+				    
+				    -- Relative Periods
+				    "Relative Period", 
+				        VAR DaysFromToday = DATEDIFF([Date], TODAY(), DAY)
+				        RETURN
+				        SWITCH(TRUE(),
+				            DaysFromToday >= -30 && DaysFromToday <= 0, "Last 30 Days",
+				            DaysFromToday >= -90 && DaysFromToday <= 0, "Last 90 Days",
+				            DaysFromToday >= -365 && DaysFromToday <= 0, "Last 12 Months",
+				            DaysFromToday > 0 && DaysFromToday <= 30, "Next 30 Days",
+				            DaysFromToday > 0 && DaysFromToday <= 90, "Next 90 Days",
+				            BLANK()
+				        ),
+				    
+				    -- Time Intelligence Flags
+				    "Is Current Year", YEAR([Date]) = YEAR(TODAY()),
+				    "Is Current Quarter", YEAR([Date]) = YEAR(TODAY()) && QUARTER([Date]) = QUARTER(TODAY()),
+				    "Is Current Month", YEAR([Date]) = YEAR(TODAY()) && MONTH([Date]) = MONTH(TODAY()),
+				    "Is Previous Year", YEAR([Date]) = YEAR(TODAY()) - 1,
+				    
+				    -- Season Indicators
+				    "Season", SWITCH(TRUE(),
+				        MONTH([Date]) >= 3 && MONTH([Date]) <= 5, "Spring",
+				        MONTH([Date]) >= 6 && MONTH([Date]) <= 8, "Summer",
+				        MONTH([Date]) >= 9 && MONTH([Date]) <= 11, "Fall",
+				        "Winter"
+				    ),
+				    
+				    -- Sort Columns
+				    "Month Sort", MONTH([Date]),
+				    "Day Sort", WEEKDAY([Date]),
+				    "Quarter Sort", QUARTER([Date])
+				)
+				```
+
+	annotation PBI_Id = d3fc49b686ba40aca4e3566eaca216e3
+

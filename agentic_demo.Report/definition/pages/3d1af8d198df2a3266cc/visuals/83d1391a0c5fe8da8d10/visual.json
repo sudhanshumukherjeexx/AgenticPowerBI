@@ -1,0 +1,121 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "83d1391a0c5fe8da8d10",
+  "position": {
+    "x": 9.6055210305030236,
+    "y": 69.9830817936649,
+    "z": 0,
+    "height": 252.48798137322234,
+    "width": 1151.2903063702911
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Order Date"
+                }
+              },
+              "queryRef": "Orders.Order Date",
+              "nativeQueryRef": "Order Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "Orders.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Budget Sales"
+                }
+              },
+              "queryRef": "Orders.Budget Sales",
+              "nativeQueryRef": "Budget Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Actual vs Budget Variance"
+                }
+              },
+              "queryRef": "Orders.Actual vs Budget Variance",
+              "nativeQueryRef": "Actual vs Budget Variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Actual vs Budget Variance %"
+                }
+              },
+              "queryRef": "Orders.Actual vs Budget Variance %",
+              "nativeQueryRef": "Actual vs Budget Variance %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Variance Indicator"
+                }
+              },
+              "queryRef": "Orders.Variance Indicator",
+              "nativeQueryRef": "Variance Indicator"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Variance Traffic Light"
+                }
+              },
+              "queryRef": "Orders.Variance Traffic Light",
+              "nativeQueryRef": "Variance Traffic Light"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

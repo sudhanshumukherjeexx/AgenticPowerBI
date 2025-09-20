@@ -1,0 +1,64 @@
+expression Query2 = ```
+		let
+		    // Simple data quality function that actually works
+		    AddDataQualityChecks = (SourceTable as table) =>
+		    let
+		        // Step 1: Add missing value flags
+		        AddMissingFlags = Table.AddColumn(
+		            Table.AddColumn(
+		                Table.AddColumn(
+		                    Table.AddColumn(SourceTable, 
+		                        "Sales_Missing", each [Sales] = null or [Sales] = "", type logical),
+		                    "Profit_Missing", each [Profit] = null or [Profit] = "", type logical),
+		                "CustomerID_Missing", each [Customer ID] = null or [Customer ID] = "", type logical),
+		            "ProductID_Missing", each [Product ID] = null or [Product ID] = "", type logical),
+		        
+		        // Step 2: Add validation flags
+		        AddValidations = Table.AddColumn(
+		            Table.AddColumn(
+		                Table.AddColumn(
+		                    Table.AddColumn(
+		                        Table.AddColumn(AddMissingFlags,
+		                            "Sales_Valid", each [Sales] >= 0 and [Sales] <= 50000, type logical),
+		                        "Profit_Valid", each [Profit] >= -5000 and [Profit] <= 25000, type logical),
+		                    "Quantity_Valid", each [Quantity] >= 1 and [Quantity] <= 100, type logical),
+		                "Discount_Valid", each [Discount] >= 0 and [Discount] <= 1, type logical),
+		            "Date_Valid", each [Order Date] <= [Ship Date], type logical),
+		        
+		        // Step 3: Calculate quality score per row
+		        AddQualityScore = Table.AddColumn(AddValidations, "Quality_Score", 
+		            each 
+		                let
+		                    checks = {
+		                        not [Sales_Missing],
+		                        not [Profit_Missing], 
+		                        not [CustomerID_Missing],
+		                        not [ProductID_Missing],
+		                        [Sales_Valid],
+		                        [Profit_Valid],
+		                        [Quantity_Valid],
+		                        [Discount_Valid],
+		                        [Date_Valid]
+		                    },
+		                    passed = List.Count(List.Select(checks, each _ = true)),
+		                    total = List.Count(checks)
+		                in
+		                    Number.Round((passed / total) * 100, 0),
+		            Int64.Type),
+		        
+		        // Step 4: Add traffic light indicator
+		        AddIndicator = Table.AddColumn(AddQualityScore, "Quality_Flag",
+		            each if [Quality_Score] >= 90 then "Good" 
+		                 else if [Quality_Score] >= 70 then "Warning" 
+		                 else "Poor", type text)
+		    in
+		        AddIndicator
+		in
+		    AddDataQualityChecks
+		```
+	lineageTag: 65525059-72d6-4e4f-a0bc-8e129c7fc0bd
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

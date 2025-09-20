@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "cf541518f65359e8ba76",
   "position": {
     "x": 450.08727114357026,
     "y": 418.52627347191748,
-    "z": 3,
+    "z": 3000,
     "height": 260.72128511365349,
     "width": 747.858423089164,
-    "tabOrder": 3
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "barChart",
@@ -91,37 +91,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "65e3a8106d7d72f7fc2f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Orders"
-              }
-            },
-            "Property": "Category"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "20e0fbd39b7d702856e4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Orders"
-              }
-            },
-            "Property": "Total Sales"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -110,6 +110,421 @@ table Orders
 			```
 		lineageTag: 1159c896-38dc-4db6-a521-4c697e904624
 
+	measure YoY_Sales_Growth_% =
+			
+			VAR SalesThisYear = CALCULATE([Total Sales], DATESYTD('Orders'[Order Date]))
+			VAR SalesLastYear = CALCULATE([Total Sales], DATESYTD(SAMEPERIODLASTYEAR('Orders'[Order Date])))
+			RETURN DIVIDE(SalesThisYear - SalesLastYear, SalesLastYear, 0)
+		lineageTag: ffd30723-7155-45f5-a974-268ec18065b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'QoQ Sales Growth %' =
+			
+			VAR SalesThisQ = CALCULATE([Total Sales], DATESQTD('Orders'[Order Date]))
+			VAR SalesPrevQ = CALCULATE([Total Sales], DATEADD(DATESQTD('Orders'[Order Date]), -1, QUARTER))
+			RETURN DIVIDE(SalesThisQ - SalesPrevQ, SalesPrevQ, 0)
+		lineageTag: c0a96994-1086-4d9f-bd8d-dcac1ab65ca5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '12M Rolling Avg Sales' =
+			
+			VAR Last12Months = DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -12, MONTH)
+			RETURN
+			CALCULATE(
+			    AVERAGEX(
+			        SUMMARIZE('Orders', 'Orders'[Order Date]),
+			        [Total Sales]
+			    ),
+			    Last12Months
+			)
+		lineageTag: 050c42a4-18b9-4631-a7ea-166f064bd563
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3M Moving Avg Sales' =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -3, MONTH),
+			        [Total Sales]
+			    )
+			)
+		lineageTag: c8734116-a214-4429-bf28-88a8b6f13240
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6M Moving Avg Sales' =
+			
+			CALCULATE(
+			    AVERAGEX(
+			        DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -6, MONTH),
+			        [Total Sales]
+			    )
+			)
+		lineageTag: d1f499f7-75b0-42fc-b09c-3e3aac8f2d84
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Variance %' =
+			
+			VAR Actual = [Total Sales]
+			VAR Target = 1000000  // Set your actual target or create Target Sales measure
+			RETURN DIVIDE(Actual - Target, Target, 0)
+		lineageTag: 0b3cf03a-c0f7-4b15-b22a-a3042b421306
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Std Dev' =
+			
+			STDEVX.S(
+			    SUMMARIZE('Orders', 'Orders'[Order Date], "@DailySales", [Total Sales]),
+			    [@DailySales]
+			)
+		lineageTag: b1e549ef-399a-492e-912f-8a079abce438
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Trend Acceleration' =
+			
+			VAR PrevGrowth = CALCULATE([YoY_Sales_Growth_%], DATEADD('Orders'[Order Date], -1, YEAR))
+			RETURN IF(ISBLANK(PrevGrowth), BLANK(), [YoY Sales Growth %] - PrevGrowth)
+		lineageTag: 9f65c597-7298-4797-899e-28084529c8af
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Seasonality Indicator' = ```
+			
+			VAR MonthAvg = 
+			    CALCULATE(
+			        AVERAGE('Orders'[Sales]), 
+			        ALL('Orders'), 
+			        MONTH('Orders'[Order Date]) = MONTH(TODAY())
+			    )
+			VAR YearAvg = 
+			    CALCULATE(
+			        AVERAGE('Orders'[Sales]), 
+			        ALL('Orders')
+			    )
+			RETURN 
+			    DIVIDE(MonthAvg, YearAvg, 0)
+			```
+		lineageTag: 5d515522-33c8-4d88-9302-a875d0f81fdd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top 10 Customer Flag' =
+			
+			VAR CustomerRank = RANKX(ALL('Orders'[Customer Name]), [Total Sales],, DESC)
+			RETURN IF(CustomerRank <= 10, [Total Sales], BLANK())
+		lineageTag: 8b70ce32-8a26-4dd9-af46-75037e23c157
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top 10 Product Flag' =
+			
+			VAR ProductRank = RANKX(ALL('Orders'[Product Name]), [Total Profit],, DESC)
+			RETURN IF(ProductRank <= 10, [Total Profit], BLANK())
+		lineageTag: a38ee951-cdba-4d1f-9757-0faf9446a023
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Market Share %' =
+			
+			DIVIDE([Total Sales], CALCULATE([Total Sales], ALL('Orders')), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 958c8bf7-fc0a-40dc-928d-acbcffd801d5
+
+	measure 'Customer Retention Rate' =
+			
+			VAR PrevCustomers = CALCULATETABLE(VALUES('Orders'[Customer ID]), DATEADD('Orders'[Order Date], -1, YEAR))
+			VAR CurrentCustomers = VALUES('Orders'[Customer ID])
+			RETURN DIVIDE(COUNTROWS(INTERSECT(PrevCustomers, CurrentCustomers)), COUNTROWS(PrevCustomers), 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 230e47e6-a1da-4f47-b4f2-130f40dc56ff
+
+	measure 'Average Order Value Trend' =
+			
+			CALCULATE(
+			    AVERAGEX(VALUES('Orders'[Order ID]), [Total Sales]),
+			    DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -12, MONTH)
+			)
+		lineageTag: 7d32af81-be5d-488c-88d8-5f826e23d203
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CY Sales' = CALCULATE([Total Sales], YEAR('Orders'[Order Date]) = 2014)      //TODAY()
+		lineageTag: b24d6065-37bd-40e9-a016-f82843f0da8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PY Sales' = CALCULATE([Total Sales], YEAR('Orders'[Order Date]) = 2014 - 1)
+		lineageTag: 34f030ad-54ff-48de-bce5-231728c98b8f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CY vs PY Variance' = [CY Sales] - [PY Sales]
+		lineageTag: 5fc62947-f20a-4d7e-9ad0-dfb688a0175d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CY vs PY Variance %' = DIVIDE([CY vs PY Variance], [PY Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 8b9f0b41-554d-41a1-bfb3-5fd8945cc667
+
+	measure 'CQ Sales' = ```
+			CALCULATE([Total Sales], 
+			    YEAR('Orders'[Order Date]) = 2014 && 
+			    QUARTER('Orders'[Order Date]) = 4)
+			```
+		lineageTag: f1315996-2e06-4526-b07c-2523eb50178b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PQ Sales' = ```
+			CALCULATE([Total Sales], 
+			    YEAR('Orders'[Order Date]) = 2014 && 
+			    QUARTER('Orders'[Order Date]) = 4 - 1)
+			```
+		lineageTag: bac6db26-c3bd-4433-8d68-83cc45f34b7f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CQ vs PQ Variance' = [CQ Sales] - [PQ Sales]
+		lineageTag: 03cca23e-6817-4222-8555-38169318bd79
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CQ vs PQ Variance %' = DIVIDE([CQ vs PQ Variance], [PQ Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e4b399a6-3ca8-46aa-8223-61b3490a93f5
+
+	measure 'CM Sales' =
+			CALCULATE([Total Sales],
+			    YEAR('Orders'[Order Date]) = 2014 &&
+			    MONTH('Orders'[Order Date]) = 12)
+		lineageTag: a2c03e19-1812-4aa9-9238-6a7a01395023
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PM Sales' =
+			CALCULATE([Total Sales],
+			    YEAR('Orders'[Order Date]) = 2014 &&
+			    MONTH('Orders'[Order Date]) = 12 - 1)
+		lineageTag: 9838531a-9bea-428a-ae6f-f7a72e890c3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CM vs PM Variance' = [CM Sales] - [PM Sales]
+		lineageTag: c6e0c904-5b02-42c9-98bb-214746f21cc7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CM vs PM Variance %' = DIVIDE([CM vs PM Variance], [PM Sales], 0)
+		lineageTag: 1a5512b5-4eb8-42c3-80a2-1ef7234422b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Same Period Last Year Sales' = CALCULATE([Total Sales], SAMEPERIODLASTYEAR('Orders'[Order Date]))
+		lineageTag: 6e0ec38c-bd89-4053-a4c2-260cb63c038a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Same Period Variance' = [Total Sales] - [Same Period Last Year Sales]
+		lineageTag: 204b49a8-8141-417a-9ed1-f11555b89e30
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Same Period Variance %' = DIVIDE([Same Period Variance], [Same Period Last Year Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 55830bd0-c48a-4d8c-87d8-a4b4d5b71eb6
+
+	measure 'Budget Sales' = [Total Sales] * 1.1  // 10% above actual as dummy budget
+		lineageTag: 1d9a554d-42b0-4f26-baf1-af2819a7f76f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Actual vs Budget Variance' = [Total Sales] - [Budget Sales]
+		lineageTag: eba589ce-d30d-44ce-9e7b-606823190e82
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Actual vs Budget Variance %' = DIVIDE([Actual vs Budget Variance], [Budget Sales], 0)
+		lineageTag: 44a451bf-34ee-47ac-ba87-d882085e6d42
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Actual Sales' = CALCULATE([Total Sales], DATESYTD('Orders'[Order Date]))
+		lineageTag: be68e9e3-e059-49aa-b168-727ef69662fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Budget Sales' = CALCULATE([Budget Sales], DATESYTD('Orders'[Order Date]))
+		lineageTag: 3df84b83-e384-4659-94ff-7301bff68a7b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Actual vs Budget Variance' = [YTD Actual Sales] - [YTD Budget Sales]
+		lineageTag: cf85e729-c872-4d28-b626-8ea4ac9ae6f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'YTD Actual vs Budget Variance %' = DIVIDE([YTD Actual vs Budget Variance], [YTD Budget Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 516795a0-138d-492b-b1dd-5c20a2dfd2af
+
+	measure 'Variance Indicator' =
+			
+			IF([Actual vs Budget Variance] > 0, "Favorable", "Unfavorable")
+		lineageTag: 90f763aa-3da0-417a-9d7b-f5c86cdff80c
+
+	measure 'Variance Traffic Light' =
+			
+			SWITCH(TRUE(),
+			    [Actual vs Budget Variance %] >= 0.05, "Green",
+			    [Actual vs Budget Variance %] < -0.05, "Red",
+			    "Yellow")
+		lineageTag: 5623214b-1679-42df-b4d8-13ff7e62f99b
+
+	measure 'Unit Price' = DIVIDE([Total Sales], SUM('Orders'[Quantity]), 0)
+		lineageTag: 0424ce1f-292c-4483-b930-f2340a8690ab
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Adjusted Price' =
+			
+			SUMX(
+			    'Orders',
+			    ([Unit Price] * 'Orders'[Quantity]) * (1 + SELECTEDVALUE('Price Adjustment %'[Price Adjustment %])) //'Price Adjustment %'[Price Adjustment % Value], 0))
+			)
+		lineageTag: 84d2b29d-6e86-45b5-a273-eb8f65687da1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Adjusted Sales' =
+			
+			[Total Sales] * (1 + SELECTEDVALUE('Price Adjustment %'[Price Adjustment %], 0))
+		lineageTag: fff570cf-6963-44c6-9521-824be2785c9f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue Impact' = [Adjusted Sales] - [Total Sales]
+		lineageTag: 6427b099-61e4-4440-b2ec-6e471da3717c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Revenue Impact %' = DIVIDE([Revenue Impact], [Total Sales], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3c25024d-3cfe-4c55-b504-d692e9dd7b9d
+
+	measure 'Customer Lifetime Value' =
+			
+			CALCULATE([Total Sales], ALL('Orders'[Order Date]))
+		lineageTag: 7657ba21-a389-446e-9c0c-57fc3748451d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Last Order Date' =
+			
+			FORMAT(
+			    CALCULATE(MAX('Orders'[Order Date]), ALL('Orders'[Order Date])),
+			    "MM/DD/YYYY"
+			)
+		lineageTag: 1c86a694-83b5-45be-b441-a00b0bf6b9ff
+
+	measure 'Customer Order Count' =
+			
+			CALCULATE(DISTINCTCOUNT('Orders'[Order ID]), ALL('Orders'[Order Date]))
+		formatString: 0
+		lineageTag: ba410ea8-ae37-4a8e-9c78-bef96532cc43
+
+	measure 'Customer Status' = ```
+			
+			VAR DaysSinceLastOrder = DATEDIFF(CALCULATE(MAX('Orders'[Order Date]), ALL('Orders'[Order Date])), TODAY(), DAY)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    DaysSinceLastOrder <= 90, "Active",
+			    DaysSinceLastOrder <= 365, "At Risk",
+			    "Inactive"
+			)
+			
+			```
+		lineageTag: 175f49c2-7d3e-4e65-a0f5-fecb860e0b94
+
+	measure 'Product Sales Rank' =
+			
+			RANKX(ALL('Orders'[Product Name]), [Total Sales],, DESC)
+		formatString: 0
+		lineageTag: c5e2786b-025a-451a-9299-29abcf57105a
+
+	measure 'Product Profit Margin' = ```
+			
+			DIVIDE([Total Profit], [Total Sales], 0)
+			
+			```
+		lineageTag: 2db46771-a872-4389-92e2-b759264dccfe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Product Performance' = ```
+			
+			VAR SalesRank = [Product Sales Rank]
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    SalesRank <= 10, "Top Performer",
+			    SalesRank <= 50, "Good",
+			    SalesRank <= 100, "Average",
+			    "Below Average"
+			)
+			
+			```
+		lineageTag: 36c47f97-f5ce-47e3-b871-d4836575ace7
+
+	measure 'Product 3M Trend' = ```
+			
+			VAR Current3M = CALCULATE([Total Sales], DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -3, MONTH))
+			VAR Previous3M = CALCULATE([Total Sales], DATESINPERIOD('Orders'[Order Date], LASTDATE('Orders'[Order Date]), -6, MONTH))
+			RETURN
+			DIVIDE(Current3M - Previous3M, Previous3M, 0)
+			
+			```
+		lineageTag: 95ec610e-f39e-4876-9aa9-f0d3a1236b3e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Top 3 Product' =
+			
+			VAR ProductRank = RANKX(ALL('Orders'[Product Name]), [Total Profit],, DESC)
+			RETURN IF(ProductRank <= 3, [Total Profit], BLANK())
+		lineageTag: 172b9435-d9a2-4d20-9e4a-c34e90769574
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Growth Trend Arrow' =
+			
+			SWITCH(
+			    TRUE(),
+			    [YoY_Sales_Growth_%] > 0.05, "▲",
+			    [YoY_Sales_Growth_%] < -0.05, "▼",
+			    "►"
+			)
+		lineageTag: 23014831-4a68-497e-b796-cb2c0850a40b
+
+	measure 'KPI Status Color' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    [YoY_Sales_Growth_%] > 0.05, "#388E3C",
+			    [YoY_Sales_Growth_%] < -0.05, "#D32F2F", 
+			    "#FBC02D"
+			)
+			
+			```
+		lineageTag: 250e22bc-0bb7-4d09-bbfb-6ae764bf2c98
+
 	column 'Row ID'
 		dataType: string
 		lineageTag: b1c75f64-f086-473c-b9d9-158dd812c90e

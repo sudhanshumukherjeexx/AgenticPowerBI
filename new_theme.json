@@ -1,0 +1,69 @@
+{
+  "name": "Modern Analytics Dashboard Theme",
+  "dataColors": [
+    "#005B4F",
+    "#F2994A",
+    "#EB5757",
+    "#56CC9D",
+    "#2D9CDB",
+    "#BB6BD9",
+    "#F2C94C",
+    "#6FCF97",
+    "#9B51E0",
+    "#333333",
+    "#27AE60",
+    "#FF6F61"
+  ],
+  "background": "#F3F6FB",
+  "foreground": "#1A1A1A",
+  "tableAccent": "#005B4F",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#FFFFFF"}}}],
+        "border": [{"color": {"solid": {"color": "#D1D5DB"}}}]
+      }
+    },
+    "card": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#FFFFFF"}}}],
+        "border": [{"color": {"solid": {"color": "#D1D5DB"}}}],
+        "dropShadow": [{"show": true, "color": {"solid": {"color": "#00000020"}}}]
+      }
+    },
+    "tableEx": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#FFFFFF"}}}],
+        "border": [{"color": {"solid": {"color": "#D1D5DB"}}}]
+      }
+    },
+    "slicer": {
+      "*": {
+        "background": [{"color": {"solid": {"color": "#FFFFFF"}}}],
+        "border": [{"color": {"solid": {"color": "#D1D5DB"}}}]
+      }
+    }
+  },
+  "textClasses": {
+    "callout": {
+      "fontSize": 45,
+      "fontFace": "Segoe UI Light",
+      "color": "#005B4F"
+    },
+    "title": {
+      "fontSize": 20,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#005B4F"
+    },
+    "header": {
+      "fontSize": 16,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#1A1A1A"
+    },
+    "label": {
+      "fontSize": 13,
+      "fontFace": "Segoe UI",
+      "color": "#333333"
+    }
+  }
+}

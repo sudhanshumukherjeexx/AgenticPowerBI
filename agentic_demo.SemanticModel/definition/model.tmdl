@@ -8,9 +8,7 @@ model Model
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBIDesktopVersion = 2.146.1254.0 (25.08)+791a7518fadc83da883d79322a2658aff57c8db3
-
-annotation PBI_QueryOrder = ["Orders","People","Returns","Query1"]
+annotation PBI_QueryOrder = ["Orders","People","Returns","Query1","M-Query","Query2","Invoked Function","Invoked Function (2)"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -27,6 +25,27 @@ ref table RegionAccess
 ref table CountryAccess
 ref table RegionManager
 ref table Query1
+ref table Date-New
+ref table LocalDateTable_a5eb28c1-339b-4ce2-bfcd-c8fea5e57475
+ref table LocalDateTable_aac8dacc-9743-4b83-b3f3-c7ff95595815
+ref table LocalDateTable_327ec736-0251-4d6f-b2e4-e5ec94401975
+ref table LocalDateTable_c5718507-9e5a-4f84-9617-da1f455fa72a
+ref table LocalDateTable_fb0564ea-cede-4756-892e-168d97cf8ced
+ref table M-Query
+ref table LocalDateTable_9d01eb6b-c230-4fa1-918b-484c5dba3c99
+ref table LocalDateTable_dc526be2-9f49-4289-aa35-511e89554e5c
+ref table LocalDateTable_d66aa8ad-d2d6-404e-91d1-a761b95c6c85
+ref table LocalDateTable_d852fe32-1afd-4467-a6f3-b53a7f155167
+ref table LocalDateTable_8e502070-98a1-47dd-b91d-ccd20229bc79
+ref table LocalDateTable_8084851b-77b2-40dc-b9be-e59d4d5f8381
+ref table LocalDateTable_ead57f80-2691-4ffe-a0a0-0f2136765871
+ref table 'Invoked Function'
+ref table LocalDateTable_7aa3c2e4-323b-43a7-8811-a17c385ea838
+ref table LocalDateTable_b6ae193f-3c70-4010-ae5d-51f9a8f9d273
+ref table 'Price Adjustment %'
+ref table 'Invoked Function (2)'
+ref table LocalDateTable_e4fc8902-5f65-4192-912a-9a6f2f20cfcf
+ref table LocalDateTable_8165775d-7bbc-4bd9-8a26-53c19f48ad1f
 
 ref role 'Sales Manager'
 ref role 'Country Manager'

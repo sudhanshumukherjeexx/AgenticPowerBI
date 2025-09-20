@@ -1,0 +1,417 @@
+table M-Query
+	lineageTag: 0f976913-fccc-4130-809c-6a6824d0982e
+
+	column Date
+		dataType: string
+		lineageTag: 2ce0d0e8-c8c5-43ac-a54e-49be50b25049
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date ID'
+		dataType: string
+		lineageTag: 0bd0ed56-f163-4712-b6f1-249905c52960
+		summarizeBy: none
+		sourceColumn: Date ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 64ae7a4d-6e5f-4997-9d09-a6fa4a135730
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c3eb95f-5ace-4faa-becc-8f1a2b66ad8c
+		summarizeBy: sum
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d2ca743-489f-4709-b82f-75f986106182
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: bba069d5-51ef-426e-930c-9d6996d48ffd
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: int64
+		formatString: 0
+		lineageTag: 040378aa-47b8-48aa-8e2e-4ba311520547
+		summarizeBy: sum
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ISO Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8efe2730-f6dd-4190-8c65-aa64e159c491
+		summarizeBy: sum
+		sourceColumn: ISO Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: int64
+		formatString: 0
+		lineageTag: add5a44b-15a5-449d-b652-726fdf621998
+		summarizeBy: sum
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name'
+		dataType: string
+		lineageTag: bed1c4ec-374e-43d3-ac40-76ae24f7c73c
+		summarizeBy: none
+		sourceColumn: Day Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		formatString: 0
+		lineageTag: b8d2b269-92e6-41a6-a42f-c54a54dac460
+		summarizeBy: sum
+		sourceColumn: Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		formatString: 0
+		lineageTag: 49bb23f0-0e1d-4be5-8c6c-0ba706cb2041
+		summarizeBy: sum
+		sourceColumn: Fiscal Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3755e9bf-f01c-4ccd-ae2f-d073c5ba8d2a
+		summarizeBy: sum
+		sourceColumn: Fiscal Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Weekend'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 445e4745-dfa3-4920-a1a3-d74b44f681e9
+		summarizeBy: none
+		sourceColumn: Is Weekend
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Business Day'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1c3b0a30-ddc1-48b5-b5b7-7b6785de46f2
+		summarizeBy: none
+		sourceColumn: Is Business Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Holiday'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0e9d93d1-ff61-4762-b228-8259730fb524
+		summarizeBy: none
+		sourceColumn: Is Holiday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Season
+		dataType: string
+		lineageTag: e88746a2-20bc-41dd-ac9b-4cef005470c9
+		summarizeBy: none
+		sourceColumn: Season
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Short Date'
+		dataType: string
+		lineageTag: 1dcbc6db-c157-43c4-a122-e3f00f7b523b
+		summarizeBy: none
+		sourceColumn: Short Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Long Date'
+		dataType: string
+		lineageTag: 99ccbaf2-5b99-4ac0-b990-3bbb75e03e11
+		summarizeBy: none
+		sourceColumn: Long Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4022f7fa-ba7c-4290-966a-dc456823e65a
+		summarizeBy: none
+		sourceColumn: Week Start Date
+
+		variation Variation
+			isDefault
+			relationship: 5084260a-dccd-47c1-8f70-4831ab1cc106
+			defaultHierarchy: LocalDateTable_9d01eb6b-c230-4fa1-918b-484c5dba3c99.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Month Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1505018f-5519-424a-98df-c7a593878601
+		summarizeBy: none
+		sourceColumn: Month Start Date
+
+		variation Variation
+			isDefault
+			relationship: 027f384e-6895-4c6a-bde5-6f216624b538
+			defaultHierarchy: LocalDateTable_dc526be2-9f49-4289-aa35-511e89554e5c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Quarter Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bd3ca7d4-1c23-48b8-8fda-8aa68ca2d6e3
+		summarizeBy: none
+		sourceColumn: Quarter Start Date
+
+		variation Variation
+			isDefault
+			relationship: ced82acb-1667-4658-bf6b-c69173a520ba
+			defaultHierarchy: LocalDateTable_d66aa8ad-d2d6-404e-91d1-a761b95c6c85.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Days from Today'
+		dataType: int64
+		formatString: 0
+		lineageTag: fb0c2dbc-d262-4b52-be8c-e6d966a13dbf
+		summarizeBy: sum
+		sourceColumn: Days from Today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Relative Period'
+		dataType: string
+		lineageTag: c2ffa396-5fa3-4206-80ba-64955b7abe40
+		summarizeBy: none
+		sourceColumn: Relative Period
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Previous Year'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 81daf135-25b5-4c1b-8471-45a3ff8e6356
+		summarizeBy: none
+		sourceColumn: Previous Year
+
+		variation Variation
+			isDefault
+			relationship: 58f6e118-b1c9-4d9d-abf5-b52c42521ca1
+			defaultHierarchy: LocalDateTable_d852fe32-1afd-4467-a6f3-b53a7f155167.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Previous Quarter'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 745dc4f4-629d-47da-ac84-9279c38b05dc
+		summarizeBy: none
+		sourceColumn: Previous Quarter
+
+		variation Variation
+			isDefault
+			relationship: e40e5ee6-7ece-490c-81a0-6b60c8b1ebc6
+			defaultHierarchy: LocalDateTable_8e502070-98a1-47dd-b91d-ccd20229bc79.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Previous Month'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3e13157c-cd7f-4407-bb49-65433e8f2065
+		summarizeBy: none
+		sourceColumn: Previous Month
+
+		variation Variation
+			isDefault
+			relationship: e021869f-f859-46bd-b730-e0fefe25ab81
+			defaultHierarchy: LocalDateTable_8084851b-77b2-40dc-b9be-e59d4d5f8381.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column YTD
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 45f44cb6-d1a2-45e5-948f-ef1affc49da4
+		summarizeBy: none
+		sourceColumn: YTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTD
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e9d14e52-5d06-4a3e-a857-fabb2eac3106
+		summarizeBy: none
+		sourceColumn: QTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column MTD
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1b96c1e0-e9de-4d6c-acc6-fb6bb227c197
+		summarizeBy: none
+		sourceColumn: MTD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Same Period Last Year'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1b067e7e-5cda-4848-996a-c3dc80725431
+		summarizeBy: none
+		sourceColumn: Same Period Last Year
+
+		variation Variation
+			isDefault
+			relationship: 5355bbf1-4c78-488d-acc7-63a31684dbe7
+			defaultHierarchy: LocalDateTable_ead57f80-2691-4ffe-a0a0-0f2136765871.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition M-Query = m
+		mode: import
+		source = ```
+				// M Language Power Query Date Table (Dynamic Range, Business Days, ISO/US Week, Seasons, Formatting)
+				let
+				    // Get min/max date from Orders table (replace with your table name)
+				    Source = Excel.Workbook(File.Contents("d:\Neokai\Github_PBI\AgenticPowerBI\global_sales.xlsx"), null, true),
+				    Orders_Sheet = Source{[Item="Orders",Kind="Sheet"]}[Data],
+				    Orders = Table.PromoteHeaders(Orders_Sheet, [PromoteAllScalars=true]),
+				    OrdersWithDate = Table.TransformColumns(Orders, {{"Order Date", each Date.From(Number.From(_)), type date}}),
+				    MinDate = List.Min(OrdersWithDate[Order Date]),
+				    MaxDate = List.Max(OrdersWithDate[Order Date]),
+				
+				    // Generate continuous date list
+				    DateList = List.Dates(MinDate, Duration.Days(MaxDate - MinDate) + 1, #duration(1,0,0,0)),
+				    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				
+				    // Add standard columns
+				    AddDateID = Table.AddColumn(DateTable, "Date ID", each Date.ToText([Date], "yyyyMMdd"), type text),
+				    AddYear = Table.AddColumn(AddDateID, "Year", each Date.Year([Date]), Int64.Type),
+				    AddQuarter = Table.AddColumn(AddYear, "Quarter", each Date.QuarterOfYear([Date]), Int64.Type),
+				    AddMonth = Table.AddColumn(AddQuarter, "Month", each Date.Month([Date]), Int64.Type),
+				    AddMonthName = Table.AddColumn(AddMonth, "Month Name", each Date.ToText([Date], "MMMM"), type text),
+				    AddWeek = Table.AddColumn(AddMonthName, "Week", each Date.WeekOfYear([Date]), Int64.Type),
+				    AddISOWeek = Table.AddColumn(AddWeek, "ISO Week", each Date.WeekOfYear([Date], Day.Monday), Int64.Type),
+				    AddDayOfWeek = Table.AddColumn(AddISOWeek, "Day of Week", each Date.DayOfWeek([Date]), Int64.Type),
+				    AddDayName = Table.AddColumn(AddDayOfWeek, "Day Name", each Date.ToText([Date], "dddd"), type text),
+				
+				    // Fiscal columns (Fiscal year starts April 1st)
+				    AddFiscalYear = Table.AddColumn(AddDayName, "Fiscal Year", each if Date.Month([Date]) >= 4 then Date.Year([Date]) + 1 else Date.Year([Date]), Int64.Type),
+				    AddFiscalQuarter = Table.AddColumn(AddFiscalYear, "Fiscal Quarter", each Number.Mod(Date.QuarterOfYear([Date]) + 2, 4) + 1, Int64.Type),
+				    AddFiscalMonth = Table.AddColumn(AddFiscalQuarter, "Fiscal Month", each if Date.Month([Date]) >= 4 then Date.Month([Date]) - 3 else Date.Month([Date]) + 9, Int64.Type),
+				
+				    // Weekday/Weekend/Business Day
+				    AddIsWeekend = Table.AddColumn(AddFiscalMonth, "Is Weekend", each let d = Date.DayOfWeek([Date], Day.Monday) in d >= 5, type logical),
+				    AddIsBusinessDay = Table.AddColumn(AddIsWeekend, "Is Business Day", each not [Is Weekend], type logical),
+				
+				    // US Holidays (simplified)
+				    AddIsHoliday = Table.AddColumn(AddIsBusinessDay, "Is Holiday", each 
+				        let
+				            m = Date.Month([Date]),
+				            d = Date.Day([Date])
+				        in
+				            (m = 1 and d = 1) or // New Year's Day
+				            (m = 7 and d = 4) or // Independence Day
+				            (m = 12 and d = 25), // Christmas
+				        type logical
+				    ),
+				
+				    // Season indicators
+				    AddSeason = Table.AddColumn(AddIsHoliday, "Season", each 
+				        let
+				            m = Date.Month([Date])
+				        in
+				            if m = 12 or m = 1 or m = 2 then "Winter"
+				            else if m = 3 or m = 4 or m = 5 then "Spring"
+				            else if m = 6 or m = 7 or m = 8 then "Summer"
+				            else "Fall",
+				        type text
+				    ),
+				
+				    // Date formatting variations
+				    AddShortDate = Table.AddColumn(AddSeason, "Short Date", each Date.ToText([Date], "MM/dd/yyyy"), type text),
+				    AddLongDate = Table.AddColumn(AddShortDate, "Long Date", each Date.ToText([Date], "dddd, MMMM dd, yyyy"), type text),
+				
+				    // Week Start, Month Start, Quarter Start
+				    AddWeekStart = Table.AddColumn(AddLongDate, "Week Start Date", each Date.AddDays([Date], -Date.DayOfWeek([Date], Day.Monday)), type date),
+				    AddMonthStart = Table.AddColumn(AddWeekStart, "Month Start Date", each Date.StartOfMonth([Date]), type date),
+				    AddQuarterStart = Table.AddColumn(AddMonthStart, "Quarter Start Date", each Date.StartOfQuarter([Date]), type date),
+				
+				    // Days from Today, Relative Period
+				    AddDaysFromToday = Table.AddColumn(AddQuarterStart, "Days from Today", each Duration.Days([Date] - Date.From(DateTime.LocalNow())), Int64.Type),
+				    AddRelativePeriod = Table.AddColumn(AddDaysFromToday, "Relative Period", each 
+				        if [Date] >= Date.AddDays(Date.From(DateTime.LocalNow()), -29) and [Date] <= Date.From(DateTime.LocalNow()) then "Last 30 Days"
+				        else if [Date] >= Date.AddDays(Date.From(DateTime.LocalNow()), -89) and [Date] <= Date.From(DateTime.LocalNow()) then "Last 90 Days"
+				        else null, type text
+				    ),
+				
+				    // Time Intelligence: Previous Year, Quarter, Month, YTD, QTD, MTD, Same Period Last Year
+				    AddPrevYear = Table.AddColumn(AddRelativePeriod, "Previous Year", each Date.AddYears([Date], -1), type date),
+				    AddPrevQuarter = Table.AddColumn(AddPrevYear, "Previous Quarter", each Date.AddQuarters([Date], -1), type date),
+				    AddPrevMonth = Table.AddColumn(AddPrevQuarter, "Previous Month", each Date.AddMonths([Date], -1), type date),
+				    AddYTD = Table.AddColumn(AddPrevMonth, "YTD", each [Date] >= Date.StartOfYear([Date]) and [Date] <= Date.From(DateTime.LocalNow()), type logical),
+				    AddQTD = Table.AddColumn(AddYTD, "QTD", each [Date] >= Date.StartOfQuarter([Date]) and [Date] <= Date.From(DateTime.LocalNow()), type logical),
+				    AddMTD = Table.AddColumn(AddQTD, "MTD", each [Date] >= Date.StartOfMonth([Date]) and [Date] <= Date.From(DateTime.LocalNow()), type logical),
+				    AddSamePeriodLastYear = Table.AddColumn(AddMTD, "Same Period Last Year", each Date.AddYears([Date], -1), type date)
+				in
+				    AddSamePeriodLastYear
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

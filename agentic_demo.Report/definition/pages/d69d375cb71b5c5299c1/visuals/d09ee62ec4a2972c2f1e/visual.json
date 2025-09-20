@@ -1,0 +1,55 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "d09ee62ec4a2972c2f1e",
+  "position": {
+    "x": 79.5886028241679,
+    "y": 53.516474312802565,
+    "z": 0,
+    "height": 164.66607480862328,
+    "width": 246.9991122129349
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "YoY_Sales_Growth_%"
+                }
+              },
+              "queryRef": "Orders.YoY_Sales_Growth_%",
+              "nativeQueryRef": "YoY_Sales_Growth_%"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Orders"
+                  }
+                },
+                "Property": "YoY_Sales_Growth_%"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

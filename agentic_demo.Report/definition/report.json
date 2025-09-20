@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Corporate_Executive_Dashboard_5052129944137249.json",
+      "name": "Modern_Analytics_Dashboard_The35485390994538035.json",
       "reportVersionAtImport": {
         "visual": "2.1.0",
         "report": "2.1.0",
@@ -55,8 +55,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Corporate_Executive_Dashboard_5052129944137249.json",
-          "path": "Corporate_Executive_Dashboard_5052129944137249.json",
+          "name": "Modern_Analytics_Dashboard_The35485390994538035.json",
+          "path": "Modern_Analytics_Dashboard_The35485390994538035.json",
           "type": "CustomTheme"
         }
       ]

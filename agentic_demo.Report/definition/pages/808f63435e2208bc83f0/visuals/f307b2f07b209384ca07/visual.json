@@ -1,13 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
   "name": "f307b2f07b209384ca07",
   "position": {
     "x": 39.794301412083954,
     "y": 56.260908892946283,
-    "z": 1,
+    "z": 1000,
     "height": 168.78272667883886,
-    "width": 651.80321278413373,
-    "tabOrder": 1
+    "width": 651.80321278413373
   },
   "visual": {
     "visualType": "slicer",
@@ -73,23 +72,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "8d351d09b1d397251099",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Orders"
-              }
-            },
-            "Property": "Region"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

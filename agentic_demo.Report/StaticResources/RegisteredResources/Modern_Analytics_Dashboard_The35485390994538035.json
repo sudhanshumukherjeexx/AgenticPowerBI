@@ -1,18 +1,18 @@
 {
-  "name": "Corporate Executive Dashboard Theme",
+  "name": "Modern Analytics Dashboard Theme",
   "dataColors": [
-    "#2E5BBA",
-    "#1B9E77",
-    "#D32F2F",
-    "#FBC02D",
-    "#388E3C",
-    "#FFA726",
-    "#7B1FA2",
-    "#0288D1",
-    "#F57C00",
-    "#455A64",
-    "#C2185B",
-    "#0097A7",
+    "#005B4F",
+    "#F2994A",
+    "#EB5757",
+    "#56CC9D",
+    "#2D9CDB",
+    "#BB6BD9",
+    "#F2C94C",
+    "#6FCF97",
+    "#9B51E0",
+    "#333333",
+    "#27AE60",
+    "#FF6F61",
     "#FB8281",
     "#F4D25A",
     "#7F898A",
@@ -482,9 +482,9 @@
     "#0D2E25",
     "#54484E"
   ],
-  "background": "#F5F7FA",
-  "foreground": "#222222",
-  "tableAccent": "#2E5BBA",
+  "background": "#F3F6FB",
+  "foreground": "#1A1A1A",
+  "tableAccent": "#005B4F",
   "visualStyles": {
     "*": {
       "*": {
@@ -501,7 +501,7 @@
           {
             "color": {
               "solid": {
-                "color": "#B0BEC5"
+                "color": "#D1D5DB"
               }
             }
           }
@@ -523,7 +523,7 @@
           {
             "color": {
               "solid": {
-                "color": "#B0BEC5"
+                "color": "#D1D5DB"
               }
             }
           }
@@ -555,7 +555,7 @@
           {
             "color": {
               "solid": {
-                "color": "#B0BEC5"
+                "color": "#D1D5DB"
               }
             }
           }
@@ -577,7 +577,7 @@
           {
             "color": {
               "solid": {
-                "color": "#B0BEC5"
+                "color": "#D1D5DB"
               }
             }
           }
@@ -589,22 +589,22 @@
     "callout": {
       "fontSize": 45,
       "fontFace": "Segoe UI Light",
-      "color": "#2E5BBA"
+      "color": "#005B4F"
     },
     "title": {
       "fontSize": 20,
       "fontFace": "Segoe UI Semibold",
-      "color": "#2E5BBA"
+      "color": "#005B4F"
     },
     "header": {
       "fontSize": 16,
       "fontFace": "Segoe UI Semibold",
-      "color": "#222222"
+      "color": "#1A1A1A"
     },
     "label": {
       "fontSize": 13,
       "fontFace": "Segoe UI",
-      "color": "#455A64"
+      "color": "#333333"
     }
   }
 }

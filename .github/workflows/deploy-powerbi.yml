@@ -1,0 +1,26 @@
+name: Power BI PBIX Deployment
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy-powerbi:
+    runs-on: windows-latest
+    env:
+      PBI_WORKSPACE_ID: ${{ secrets.PBI_WORKSPACE_ID }}
+      PBI_CLIENT_ID: ${{ secrets.PBI_CLIENT_ID }}
+      PBI_CLIENT_SECRET: ${{ secrets.PBI_CLIENT_SECRET }}
+      PBI_TENANT_ID: ${{ secrets.PBI_TENANT_ID }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Deploy PBIX to Power BI Workspace
+        shell: pwsh
+        run: |
+          ./scripts/deploy-powerbi.ps1 -WorkspaceId $env:PBI_WORKSPACE_ID -PbixPath "./global_sales.pbix" -ClientId $env:PBI_CLIENT_ID -ClientSecret $env:PBI_CLIENT_SECRET -TenantId $env:PBI_TENANT_ID
+      - name: Notify Success
+        if: success()
+        run: echo "Power BI deployment succeeded!"
+      - name: Notify Failure
+        if: failure()
+        run: echo "Power BI deployment failed!"

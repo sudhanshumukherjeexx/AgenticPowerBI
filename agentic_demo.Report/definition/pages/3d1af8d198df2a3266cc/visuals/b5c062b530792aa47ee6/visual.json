@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.2.0/schema.json",
+  "name": "b5c062b530792aa47ee6",
+  "position": {
+    "x": 9.6055210305030236,
+    "y": 380.10418934990537,
+    "z": 1000,
+    "height": 252.48798137322234,
+    "width": 1218.5289535838122,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Order Date"
+                }
+              },
+              "queryRef": "Orders.Order Date",
+              "nativeQueryRef": "Order Date"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Total Sales"
+                }
+              },
+              "queryRef": "Orders.Total Sales",
+              "nativeQueryRef": "Total Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "YTD Actual Sales"
+                }
+              },
+              "queryRef": "Orders.YTD Actual Sales",
+              "nativeQueryRef": "YTD Actual Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "Budget Sales"
+                }
+              },
+              "queryRef": "Orders.Budget Sales",
+              "nativeQueryRef": "Budget Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "YTD Budget Sales"
+                }
+              },
+              "queryRef": "Orders.YTD Budget Sales",
+              "nativeQueryRef": "YTD Budget Sales"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "YTD Actual vs Budget Variance"
+                }
+              },
+              "queryRef": "Orders.YTD Actual vs Budget Variance",
+              "nativeQueryRef": "YTD Actual vs Budget Variance"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Orders"
+                    }
+                  },
+                  "Property": "YTD Actual vs Budget Variance %"
+                }
+              },
+              "queryRef": "Orders.YTD Actual vs Budget Variance %",
+              "nativeQueryRef": "YTD Actual vs Budget Variance %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
